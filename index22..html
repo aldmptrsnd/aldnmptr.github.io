@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Ald-Library</title>
+
+    <style>
+        /* Reset dan styling umum */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'cosmicfont', sans-serif;
+            background-color: tan;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 1100px; /* Maksimal lebar 1100px */
+            margin: auto;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            background-color: rgb(2, 2, 67);
+            padding: 0%; /* Tambahkan sedikit padding */
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .header img {
+            margin-right: 5px;
+            width: 100px; /* Menyesuaikan ukuran gambar di header */
+        }
+
+        /* Menu */
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between; /* Menyusun menu ke kanan */
+        }
+
+        .menu ul li {
+            margin-right: 5px;
+            display: flex;
+        }
+
+        a {
+            text-decoration: none;
+            margin: 0;
+            padding: 5px;
+        }
+
+        a.tbl-biru {
+            background: rgb(2, 2, 67);
+            border-radius: 20px;
+            margin-top: 20px;
+            padding: 15px 20px;
+            color: darkkhaki;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a.tbl-biru:hover {
+            background: maroon;
+            text-decoration: none;
+        }
+/* Media Queries untuk Responsivitas */
+@media screen and (max-width: 991.98px) {
+    .wrapper {
+        width: 90%; /* Mengurangi lebar wrapper pada layar kecil */
+    }
+
+    .menu ul {
+        flex-direction: column; /* Menyusun menu vertikal pada layar kecil */
+        align-items: flex-start; /* Menyusun menu ke kiri */
+        display: none; /* Sembunyikan menu pada layar kecil */
+        width: 100%; /* Memastikan menu dropdown full-width */
+    }
+
+    .menu ul li {
+        margin-bottom: 10px; /* Menambah jarak antar item menu */
+    }
+
+    /* Menampilkan menu dengan hamburger icon */
+    .menu-toggle {
+        display: block; /* Menampilkan tombol hamburger */
+        cursor: pointer;
+        font-size: 30px;
+        color: white;
+    }
+
+    .menu.open ul {
+        display: block; /* Menampilkan menu saat hamburger diklik */
+    }
+
+    /* Mengatur ukuran gambar pada header */
+    .header img {
+        width: 60px; /* Ukuran gambar lebih kecil di layar kecil */
+    }
+}
+
+/* Media Query untuk perangkat lebih kecil (hingga 480px) */
+@media screen and (max-width: 480px) {
+    .header img {
+        width: 50px; /* Ukuran logo lebih kecil lagi pada layar sangat kecil */
+    }
+
+    .menu ul li {
+        font-size: 14px; /* Ukuran font menu lebih kecil */
+    }
+
+    a.tbl-biru {
+        padding: 10px 15px; /* Mengurangi padding tombol */
+        font-size: 14px; /* Ukuran font lebih kecil */
+    }
+}
+        /* Desain umumnya */
+        h1 {
+            font-family: 'georgia';
+            font-weight: 500%;
+            font-size: 25px;
+            margin-bottom: 7%;
+            color: darkkhaki;
+            width: 70%;
+        }
+
+        h2 {
+            font-family: 'georgia';
+            font-weight: 800;
+            font-size: 45px;
+            margin-bottom: 20px;
+            color: rgba(116, 61, 17, 0.87);
+            width: 100%;
+            line-height: 50px;
+        }
+
+        .kolom .deskripsi {
+    font-size: 1rem;  /* Ukuran font default, gunakan rem untuk fleksibilitas */
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    color: #ffffff;
+}
+
+/* Media Query untuk responsif pada layar lebih kecil */
+@media screen and (max-width: 768px) {
+    .kolom .deskripsi {
+        font-size: 1.8rem; /* Ukuran font lebih kecil pada layar sedang */
+    }
+}
+
+/* Media Query untuk perangkat dengan ukuran layar kecil (hingga 480px) */
+@media screen and (max-width: 480px) {
+    .kolom .deskripsi {
+        font-size: 1.8rem; /* Ukuran font lebih kecil pada perangkat dengan layar lebih kecil */
+    }
+}
+
+
+        /* Buku Favorit - Menggunakan grid layout */
+        #book-list {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #book-list h2 {
+            color: rgba(116, 61, 17, 0.87);
+            font-family: 'georgia';
+            font-weight: 800;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .book-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .book-item {
+            background-color: rgba(116, 61, 17, 0.87);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .book-item img {
+            width: 150px;
+            height: 200px;
+            object-fit:cover;
+            margin-bottom: 15px;
+        }
+
+        .book-item p {
+            color: lemonchiffon;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20%;
+            flex-wrap: wrap; /* Mengatur footer agar fleksibel */
+            padding: 20px;
+            background-color: rgb(2, 2, 67);
+            color: white;
+            justify-content: center; /* Center the content horizontally */
+        }
+
+                * Footer section */
+        .footer-section {
+            flex: 1 1 30%; /* Setiap section memiliki lebar minimal 30% tetapi bisa fleksibel */
+            margin: 10px;
+            padding: 10px;
+            box-sizing: border-box; /* Memastikan padding tidak memengaruhi lebar */
+        }
+
+        /* Sesuaikan untuk perangkat kecil */
+        @media screen and (max-width: 768px) {
+            .footer-section {
+                flex: 1 1 100%; /* Pada perangkat kecil, setiap section akan mengambil 100% lebar */
+            }
+        }
+        #contact {
+            background: maroon;
+        }
+
+        #copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+        }
+
+        /* Media Queries untuk Responsivitas */
+        @media screen and (max-width: 991.98%) {
+            .wrapper {
+                width: 90%;
+            }
+
+            .menu ul {
+                flex-direction: column;
+                align-items: flex-start;
+                display: none; /* Sembunyikan menu pada layar kecil */
+                width: 100%; /* Memastikan menu dropdown full-width */
+            }
+
+            .menu ul li {
+                margin-bottom: 10%;
+            }
+
+            .menu-toggle {
+                display: block; /* Menampilkan tombol hamburger */
+            }
+
+            .menu.open ul {
+                display: block; /* Tampilkan menu saat tombol hamburger ditekan */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .header img {
+                width: 80%; /* Ukuran logo lebih kecil */
+            }
+
+            .menu ul li {
+                font-size: 14%; /* Ukuran font menu lebih kecil */
+            }
+
+            .book-container {
+                grid-template-columns: 1fr; /* Buku dalam grid tampil 1 per kolom */
+            }
+
+            .footer-section {
+                width: 100%; /* Footer section full-width pada layar kecil */
+            }
+
+            h1, h2 {
+                font-size: 28px; /* Ukuran font lebih kecil pada layar sangat kecil */
+            }
+
+            .kolom .deskripsi {
+                font-size: 14%; /* Ukuran font deskripsi lebih kecil */
+            }
+        }
+
+        /* Styling untuk container steps */
+        .steps {
+            background-color: tan;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .steps h2 {
+            font-family: 'Georgia', serif;
+            font-size: 36px;
+            color: rgba(116, 61, 17, 0.87);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Grid Layout untuk step-item */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .step-item {
+            background-color: maroon;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .step-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(33, 22, 22, 0.2);
+        }
+
+        .step-item strong {
+            display: block;
+            font-size: 20px;
+            color: darkkhaki;
+            margin-bottom: 10px;
+        }
+
+        .step-item p {
+            font-size: 16px;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        /* Responsif untuk perangkat lebih kecil */
+        @media screen and (max-width: 768px) {
+            .steps h2 {
+                font-size: 28px;
+            }
+
+            .step-item {
+                padding: 15px;
+            }
+
+            .step-item strong {
+                font-size: 18px;
+            }
+
+            .step-item p {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <div class="header">
+                <img src="logo.png" width="100" height="100" alt="Logo"><h1>Ald-Library</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="index22..html" class="tbl-biru">Home</a></li>
+                    <li><a href="profile.html" class="tbl-biru">Profile</a></li>
+                    <li><a href="#book-list" class="tbl-biru">Favorite</a></li>
+                    <li><a href="signup.html" class="tbl-biru">Sign Up</a></li>
+                </ul>
+                <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="wrapper">
+        <div class="kolom">
+            <h2>Welcome to Ald-Library!</h2>
+            <p class="deskripsi">
+                Website yang ideal untuk menemukan pengetahuan, belajar, dan mengeksplorasi wawasan dunia melalui koleksi buku dan sumber daya kami.
+                Di sini, Anda dapat mengakses berbagai informasi, baik untuk kebutuhan akademik maupun pribadi.
+            </p>
+        </div>
+    </section>
+
+    <section class="steps">
+        <h2>How to use Ald-Library</h2>
+        <div class="steps-container">
+            <div class="step-item">
+                <strong>Mendaftar Sebagai Anggota Ald-Library:</strong>
+                <p>Isi formulir pendaftaran dengan lengkap agar memiliki kartu anggota atau akun.</p>
+            </div>
+            <div class="step-item">
+                <strong>Mencari Buku yang Diinginkan:</strong>
+                <p>Gunakan katalog book list untuk mencari buku yang diinginkan.</p>
+            </div>
+            <div class="step-item">
+                <strong>Memeriksa Ketersediaan Buku:</strong>
+                <p>Pastikan buku tersedia atau masuk daftar tunggu jika sedang dipinjam.</p>
+            </div>
+            <div class="step-item">
+                <strong>Meminta Bantuan Petugas Perpustakaan:</strong>
+                <p>Jika kesulitan, minta bantuan petugas untuk menemukan buku.</p>
+            </div>
+            <div class="step-item">
+                <strong>Pilih Buku yang Ingin Dipinjam pada bagian transaksi peminjaman:</strong>
+                <p>Bawa atau pilih opsi buku ke meja peminjaman dan lakukan transaksi peminjaman.</p>
+            </div>
+            <div class="step-item">
+                <strong>Proses Peminjaman Buku:</strong>
+                <p>Sistem Ald-Library akan memindai data dan mencatat tanda bukti peminjaman.</p>
+            </div>
+            <div class="step-item">
+                <strong>Memastikan Tidak Ada Denda:</strong>
+                <p>Periksa apakah ada keterlambatan peminjaman dan bayarkan denda sesuai ketentuan.</p>
+            </div>
+            <div class="step-item">
+                <strong>Menjaga Buku dengan Baik:</strong>
+                <p>Jaga kondisi buku hingga saat pengembalian.</p>
+            </div>
+            <div class="step-item">
+                <strong>Mengembalikan Buku:</strong>
+                <p>Kembalikan buku pada waktu yang ditentukan.</p>
+            </div>
+        </div>
+    </section>    
+
+    <section id="book-list" class="wrapper">
+        <h2>Buku Yang Banyak Diminati</h2>
+        <div class="book-container">
+            <div class="book-item">
+                <img src="richdadpoordad.jpeg" alt="Buku 1">
+                <p><strong>Rich Dad, Poor Dad</strong><br>Penulis: Kiyosaki, Robert T.</p>
+            </div>
+            <div class="book-item">
+                <img src="toberich.jpeg" alt="Buku 2">
+                <p><strong>Will Teach You To Be Rich</strong><br>Penulis: Sethi, Ramit</p>
+            </div>
+            <div class="book-item">
+                <img src="svmoney.jpeg" alt="Buku 3">
+                <p><strong>397 Ways to Save Money</strong><br>Penulis: Taylor, Kerry K.</p>
+            </div>
+            <div class="book-item">
+                <img src="invesmentzoo.jpeg" alt="Buku 4">
+                <p><strong>The Investment Zoo</strong><br>Penulis: Jarislowsky, Stephen A.</p>
+            </div>
+            <div class="book-item">
+                <img src="thefour.jpeg" alt="Buku 5">
+                <p><strong>The Four Pillars of Investing</strong><br>Penulis: Bernstein, William J.</p>
+            </div>
+            <div class="book-item">
+                <img src="stocksforthelongrun.jpeg" alt="Buku 7">
+                <p><strong>Stocks for the Long Run</strong><br>Penulis: Siegel, Jeremy J.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        <div class="footer-section">
+            &copy; 2025. <b>Ald-Library</b> All Rights Reserved.
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('open'); // Menambahkan/tanggalkan class 'open' untuk menampilkan/menyembunyikan menu
+        }
+    </script>
+
+</body>
+
+</html>

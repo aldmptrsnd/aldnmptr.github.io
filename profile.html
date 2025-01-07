@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Ald-Library</title>
+    <style>
+        /* Gaya Umum */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* Container Profil Aplikasi */
+        .app-profile-container {
+            max-width: 650px;
+            width: 90%;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Header Aplikasi */
+        .app-header {
+            background: linear-gradient(135deg, rgb(2, 2, 67), maroon); /* Update dengan warna yang diminta */
+            padding: 30px 20px;
+            text-align: center;
+            color: tan; /* Warna teks tan */
+            border-bottom: 5px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.5s ease;
+        }
+
+        .app-header:hover {
+            background: linear-gradient(135deg, maroon, rgb(2, 2, 67));
+        }
+
+        .app-header img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .app-header h1 {
+            font-size: 28px;
+            margin: 10px 0 5px;
+            font-weight: 600;
+        }
+
+        .app-header p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Detail Aplikasi */
+        .app-details {
+            padding: 25px;
+            color: darkkhaki; /* Warna untuk teks di detail aplikasi */
+        }
+
+        .app-details h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: rgb(2, 2, 67); /* Menggunakan rgb(2, 2, 67) */
+            margin-bottom: 10px;
+        }
+
+        .app-details p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .app-details ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .app-details ul li {
+            margin: 8px 0;
+        }
+
+        /* Tombol CTA */
+        .cta-button {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(135deg, maroon, rgba(116, 61, 17, 0.87)); /* Ganti warna dengan yang diminta */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.5s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(116, 61, 17, 0.87), maroon); /* Ganti warna dengan yang diminta */
+        }
+
+        /* Footer */
+        .app-footer {
+            background: rgb(2, 2, 67); /* Menggunakan rgb(2, 2, 67) */
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: tan; /* Warna teks tan */
+            border-top: 1px solid #ddd;
+        }
+
+        .app-footer a {
+            color: tan; /* Warna teks tan */
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 5px;
+            transition: color 0.3s;
+        }
+
+        .app-footer a:hover {
+            color: maroon; /* Ganti warna saat hover menjadi maroon */
+        }
+
+        /* Animasi Fade-In */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsif untuk perangkat kecil */
+        @media (max-width: 480px) {
+            .app-header h1 {
+                font-size: 22px;
+            }
+
+            .app-details h3 {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-profile-container">
+        <!-- Header Aplikasi -->
+        <div class="app-header">
+            <img src="logo.png" alt="Logo Aplikasi">
+            <h1>Ald-Library</h1>
+            <p>New Version</p>
+        </div>
+
+        <!-- Detail Aplikasi -->
+        <div class="app-details">
+            <h3>Deskripsi</h3>
+            <p>
+                Perpustakaan Digital Ald-Library adalah aplikasi web yang dirancang untuk memudahkan pengelolaan koleksi buku, 
+                peminjaman, dan pengembalian secara efisien. Pengguna dapat mencari buku, meminjam buku, dan 
+                mengakses katalog buku kapan saja dan di mana saja.
+            </p>
+            <h3>Fitur Utama</h3>
+            <ul>
+                <li>• Pencarian buku berdasarkan kategori, judul, atau pengarang</li>
+                <li>• Sistem peminjaman dan pengembalian buku yang mudah</li>
+                <li>• Katalog buku yang selalu terupdate</li>
+                <li>• Notifikasi pengingat untuk pengembalian buku</li>
+                <li>• Akses 24/7 dari perangkat apa saja</li>
+            </ul>
+            <h3>Contact</h3>
+            <p>Alamat: Jln. Slamet,Panggung</p>
+            <p>08**-075*-**30</p>
+            <a href="index22..html" class="cta-button">Pelajari Lebih Lanjut</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="app-footer">
+            <p>&copy; 2025 Ald-Library. Semua Hak Dilindungi.</p>
+            <a href="#">Kebijakan Privasi</a> | 
+            <a href="#">Syarat & Ketentuan</a> | 
+            <a href="#">Hubungi Kami</a>
+        </div>
+    </div>
+</body>
+</html>

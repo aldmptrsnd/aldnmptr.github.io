@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Ald-Library</title>
+
+    <!-- Styling CSS -->
+    <style>
+        /* Reset dasar untuk elemen HTML */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body dan Layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: rgb(2, 2, 67);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgb(2, 2, 67);
+            color: white;
+            padding: 10px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo and Title */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 28px;
+            color: darkkhaki;
+        }
+
+        /* Navigation Links */
+        .navbar .nav-links {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin: 0 15px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .nav-links a:hover {
+            color: darkkhaki;
+        }
+
+        /* Hamburger Button (hidden by default) */
+        .navbar .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .navbar .hamburger div {
+            background-color: white;
+            height: 4px;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 0;
+            padding: 100px 20px 20px 20px;
+        }
+
+        /* Section Style */
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            color: darkkhaki;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Book List */
+        .book-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .book-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 250px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .book-item h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: rgb(2, 2, 67);
+        }
+
+        .book-item p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Kategori Buku */
+        .kategori-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .kategori-item {
+            background-color: rgb(2, 2, 67);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            flex: 1 1 20%;
+            margin-bottom: 20px;
+        }
+
+        .kategori-item:hover {
+            background-color: maroon;
+        }
+
+        /* Profile Section */
+        .profile-info {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-info .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info .profile-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .profile-info p {
+            font-size: 18px;
+            color: rgb(2, 2, 67);
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgb(2, 2, 67);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsif untuk perangkat kecil */
+        @media (max-width: 768px) {
+            .navbar .logo h1 {
+                font-size: 24px;
+            }
+
+            .navbar .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar .nav-links li {
+                margin: 15px 0;
+            }
+
+            .navbar .hamburger {
+                display: flex;
+            }
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+
+            .book-container {
+                justify-content: space-between;
+            }
+
+            .profile-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .kategori-item {
+                flex: 1 1 40%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .book-item {
+                width: 100%;
+            }
+
+            .kategori-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo Perpustakaan">
+                <h1>Ald-Library</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#book-list">Book List</a></li>
+                <li><a href="#kategori">Kategori</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="transaksi.html">Transaction</a></li>
+            </ul>
+            <!-- Hamburger Icon -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Book List Section -->
+        <section id="book-list">
+            <h2>Daftar buku yang tersedia di perpustakaan kami</h2>
+            <div class="book-container">
+                <!-- Buku 1 -->
+                <div class="book-item">
+                    <img src="invesmentzoo.jpeg" alt="Book 1">
+                    <h4>The Investment Zoo</h4>
+                    <p>Penulis: Jarislowsky, Stephen A.</p>
+                </div>
+                <!-- Buku 2 -->
+                <div class="book-item">
+                    <img src="svmoney.jpeg" alt="Book 2">
+                    <h4>397 Ways to Save Money</h4>
+                    <p>Penulis: Taylor, Kerry K.</p>
+                </div>
+                <!-- Buku 3 -->
+                <div class="book-item">
+                    <img src="toberich.jpeg" alt="Book 3">
+                    <h4>Will Teach You To Be Rich</h4>
+                    <p>Sethi, Ramit</p>
+                </div>
+                <!-- Buku 4 -->
+                <div class="book-item">
+                    <img src="richdadpoordad.jpeg" alt="Book 4">
+                    <h4>Rich dad poor dad</h4>
+                    <p>Kiyosaki, Robert T.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kategori Buku Section -->
+        <section id="kategori">
+            <h2>Kategori Buku</h2>
+            <div class="kategori-container">
+                <div class="kategori-item">Fiksi</div>
+                <div class="kategori-item">Non-Fiksi</div>
+                <div class="kategori-item">Teknologi</div>
+                <div class="kategori-item">Pendidikan</div>
+                <div class="kategori-item">Sejarah</div>
+            </div>
+        </section>
+
+        <!-- Profile Pengguna Section -->
+        <section id="profile">
+            <h2>Profile Pengguna</h2>
+            <div class="profile-info">
+                <img src="profile-jane.jpg" id="profile-img" alt="Profile Picture" class="profile-img">
+                <div class="profile-details">
+                    <p><strong>Nama:</strong> <span id="profile-name">Jane Smith</span></p>
+                    <p><strong>Email:</strong> <span id="profile-email">jane.smith@example.com</span></p>
+                    <p><strong>Status:</strong> <span id="profile-status">Anggota Ald-Library</span></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 <strong>Ald-Library</strong> All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript untuk mengganti konten profil pengguna -->
+    <script>
+        // Toggle the navbar menu for mobile view
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
+        }
+
+        const userData = {
+            name: "Jane Smith",
+            email: "jane.smith@example.com",
+            status: "Anggota Ald-Library",
+            profileImage: "profile-jane.jpg"
+        };
+
+        document.getElementById('profile-name').textContent = userData.name;
+        document.getElementById('profile-email').textContent = userData.email;
+        document.getElementById('profile-status').textContent = userData.status;
+        document.getElementById('profile-img').src = userData.profileImage;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Anggota</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .tampilan {
+            background: #fff;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .kepala {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+        }
+
+        .judul {
+            font-size: 24px;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        .artikel {
+            margin-top: 20px;
+        }
+
+        .kotak {
+            margin-bottom: 20px;
+        }
+
+        .kotak input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .kotak input[type="submit"] {
+            background-color: rgb(2, 2, 67);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .kotak input[type="submit"]:hover {
+            background-color: rgb(2, 2, 67);
+        }
+
+        .sign-up {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .sign-up a {
+            color: maroon;
+            text-decoration: none;
+        }
+
+        .sign-up a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .tampilan {
+                padding: 20px;
+                width: 80%;
+            }
+
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .judul {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <form method="post" action="dashboard.html">
+        <div class="tampilan">
+            <div class="kepala">
+                <img src="logo.png" alt="Logo" class="logo" />
+                <h2 class="judul">Login</h2>
+            </div>
+            <div class="artikel">
+                <div class="kotak">
+                    <p><input type="text" name="username" placeholder="Masukkan Username Anda" required></p>
+                    <p><input type="password" name="password" placeholder="Masukkan Password Anda" required></p>
+                    <p><input type="submit" name="commit" value="Login"></p>
+                </div>
+
+                <div class="sign-up">
+                    <p>Belum memiliki akun? <a href="signup.html">Daftar di sini</a></p>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
